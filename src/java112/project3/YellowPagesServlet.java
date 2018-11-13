@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.*;
 import javax.servlet.annotation.*;
 
 
@@ -15,15 +16,49 @@ import javax.servlet.annotation.*;
 )
 public class YellowPagesServlet extends HttpServlet {
 
+    //List companies;
     YellowPagesBean company;
     YellowPagesBean company2;
+    YellowPagesBean company3;
 
     /**
      * Initialize a bean.
      */
     public void init() {
+        //companies = new ArrayList<YellowPagesBean>();
+
         company = new YellowPagesBean();
+        company.setName("Acme Computing");
+        company.setAddress("123 Test St.");
+        company.setCity("Madison");
+        company.setState("WI");
+        company.setZipcode("53703");
+        company.setPhoneNumber("6088888888");
+        company.setUrl("http://example.com");
+        company.setNumberOfAccesses(0);
+        //companies.add(company);
+
         company2 = new YellowPagesBean();
+        company2.setName("Tops Computing");
+        company2.setAddress("234 Test St.");
+        company2.setCity("Madison");
+        company2.setState("WI");
+        company2.setZipcode("53707");
+        company2.setPhoneNumber("6087777777");
+        company2.setUrl("http://example.com");
+        company2.setNumberOfAccesses(0);
+        //companies.add(company2);
+
+        company3 = new YellowPagesBean();
+        company3.setName("Bestest Computing");
+        company3.setAddress("345 Test St.");
+        company3.setCity("Madison");
+        company3.setState("WI");
+        company3.setZipcode("53705");
+        company3.setPhoneNumber("6086666666");
+        company3.setUrl("http://example.com");
+        company3.setNumberOfAccesses(0);
+        //companies.add(company3);
     }
 
     /**
@@ -38,25 +73,16 @@ public class YellowPagesServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        company.setName("Acme Computing");
-        company.setAddress("123 Test St.");
-        company.setCity("Madison");
-        company.setState("WI");
-        company.setZipcode("53703");
-        company.setPhoneNumber("6088888888");
-        company.setUrl("http://example.com");
+
+        // request.setAttribute("companies", companies);
         company.setNumberOfAccesses(company.getNumberOfAccesses() + 1);
         request.setAttribute("company", company);
 
-        company2.setName("Tops Computing");
-        company2.setAddress("234 Test St.");
-        company2.setCity("Madison");
-        company2.setState("WI");
-        company2.setZipcode("53707");
-        company2.setPhoneNumber("6087777777");
-        company2.setUrl("http://example.com");
         company2.setNumberOfAccesses(company2.getNumberOfAccesses() + 1);
         request.setAttribute("company2", company2);
+
+        company3.setNumberOfAccesses(company3.getNumberOfAccesses() + 1);
+        request.setAttribute("company3", company3);
 
         String url = "/yellow_pages.jsp";
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(url);
