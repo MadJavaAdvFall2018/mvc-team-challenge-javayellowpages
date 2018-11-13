@@ -1,4 +1,4 @@
-<%@ page import="java112.project3.*, java.util.*" %><html>
+<%-- @ page import="java112.project3.*, java.util.*" --%><html>
     <head>
         <title>Yellow Pages</title>
     </head>
