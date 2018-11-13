@@ -24,5 +24,6 @@
             <tr><td>Website</td><td>${company2.url}</td></tr>
             <tr><td>Accesses</td><td>${company2.numberOfAccesses}</td></tr>
         </table>
+        <a href="/java112/yellow_diagram.jsp">Diagram</a>
     </body>
 </html>
