@@ -1,8 +1,9 @@
-//TODO update the line below for your team and project.
-# MVC Team Challenge Repository
+# MVC Java Yellow Pages Repository
 
-//TODO add your team member names below.
 ### Team Members:
+Grant Bitzer
+Sungwon Hong
+Curtis Moore
 
 ### Repository Notes
 1. This repository is structured like your projects repository for class, with one main difference:
