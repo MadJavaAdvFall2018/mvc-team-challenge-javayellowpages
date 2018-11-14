@@ -16,8 +16,8 @@ import javax.servlet.annotation.*;
 )
 public class YellowPagesServlet extends HttpServlet {
 
-    //List companies;
-    YellowPagesBean company;
+    List<YellowPagesBean> companies;
+    YellowPagesBean company1;
     YellowPagesBean company2;
     YellowPagesBean company3;
 
@@ -25,18 +25,18 @@ public class YellowPagesServlet extends HttpServlet {
      * Initialize a bean.
      */
     public void init() {
-        //companies = new ArrayList<YellowPagesBean>();
+        companies = new ArrayList<YellowPagesBean>();
 
-        company = new YellowPagesBean();
-        company.setName("Acme Computing");
-        company.setAddress("123 Test St.");
-        company.setCity("Madison");
-        company.setState("WI");
-        company.setZipcode("53703");
-        company.setPhoneNumber("6088888888");
-        company.setUrl("http://example.com");
-        company.setNumberOfAccesses(0);
-        //companies.add(company);
+        company1 = new YellowPagesBean();
+        company1.setName("Acme Computing");
+        company1.setAddress("123 Test St.");
+        company1.setCity("Madison");
+        company1.setState("WI");
+        company1.setZipcode("53703");
+        company1.setPhoneNumber("6088888888");
+        company1.setUrl("http://example.com");
+        company1.setNumberOfAccesses(0);
+        companies.add(company1);
 
         company2 = new YellowPagesBean();
         company2.setName("Tops Computing");
@@ -47,7 +47,7 @@ public class YellowPagesServlet extends HttpServlet {
         company2.setPhoneNumber("6087777777");
         company2.setUrl("http://example.com");
         company2.setNumberOfAccesses(0);
-        //companies.add(company2);
+        companies.add(company2);
 
         company3 = new YellowPagesBean();
         company3.setName("Bestest Computing");
@@ -58,7 +58,7 @@ public class YellowPagesServlet extends HttpServlet {
         company3.setPhoneNumber("6086666666");
         company3.setUrl("http://example.com");
         company3.setNumberOfAccesses(0);
-        //companies.add(company3);
+        companies.add(company3);
     }
 
     /**
@@ -74,15 +74,20 @@ public class YellowPagesServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // request.setAttribute("companies", companies);
-        company.setNumberOfAccesses(company.getNumberOfAccesses() + 1);
-        request.setAttribute("company", company);
+//        company.setNumberOfAccesses(company.getNumberOfAccesses() + 1);
+//        request.setAttribute("company", company);
+//
+//        company2.setNumberOfAccesses(company2.getNumberOfAccesses() + 1);
+//        request.setAttribute("company2", company2);
+//
+//        company3.setNumberOfAccesses(company3.getNumberOfAccesses() + 1);
+//        request.setAttribute("company3", company3);
 
-        company2.setNumberOfAccesses(company2.getNumberOfAccesses() + 1);
-        request.setAttribute("company2", company2);
+        for (YellowPagesBean company : companies) {
+            company.setNumberOfAccesses(company.getNumberOfAccesses() + 1);
+        }
+        request.setAttribute("companies", companies);
 
-        company3.setNumberOfAccesses(company3.getNumberOfAccesses() + 1);
-        request.setAttribute("company3", company3);
 
         String url = "/yellow_pages.jsp";
         RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher(url);
