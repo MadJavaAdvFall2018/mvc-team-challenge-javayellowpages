@@ -86,6 +86,7 @@ public class YellowPagesServlet extends HttpServlet {
         for (YellowPagesBean company : companies) {
             company.setNumberOfAccesses(company.getNumberOfAccesses() + 1);
         }
+
         request.setAttribute("companies", companies);
 
 
